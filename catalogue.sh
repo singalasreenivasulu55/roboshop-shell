@@ -46,12 +46,12 @@ VALIDATE $? "creating roboshop user"
 mkdir /app &>> $LOGFILE
 VALIDATE $? "creating app directory"
 
-curl -o /tmp/catalogue.zip https://roboshop-builds.s3.amazonaws.com/catalogue.zip $>> $LOGFILE
+curl -o /tmp/catalogue.zip https://roboshop-builds.s3.amazonaws.com/catalogue.zip  &>> $LOGFILE
 VALIDATE $? "Downloading catalogue application"
 
 cd /app 
 
-unzip /tmp/catalogue.zip $>> $LOGFILE
+unzip /tmp/catalogue.zip &>> $LOGFILE
 VALIDATE $? "unzipping catalogue"
 
 npm install &>> $LOGFILE
