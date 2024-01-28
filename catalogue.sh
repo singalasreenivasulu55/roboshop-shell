@@ -40,7 +40,7 @@ VALIDATE $? "Enabling NodeJS:18"
 dnf install nodejs -y &>> $LOGFILE
 VALIDATE $?  "Installing NodeJS:18"
 
-useradd roboshop
+useradd roboshop &>> $LOGFILE
 VALIDATE $? "creating roboshop user"
 
 mkdir /app &>> $LOGFILE
@@ -63,7 +63,7 @@ VALIDATE $? "Copying catalogue service file"
 systemctl daemon-reload &>> $LOGFILE
 VALIDATE $? "catalogue daemon reload"
 
-systemctl enable catalogue $>> $LOGFILE
+systemctl enable catalogue &>> $LOGFILE
 VALIDATE $? "Enabling catalogue"
 
 systemctl start catalogue &>> $LOGFILE
