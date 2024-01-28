@@ -44,7 +44,7 @@ VALIDATE $? "Installing NodeJS:18"
 
 useradd roboshop
 
-VALIDATE $? "roboshop user creation"
+VALIDATE $? "creating roboshop user"
 
 mkdir /app
 
