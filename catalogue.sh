@@ -5,7 +5,7 @@ R="\e[31m"
 G="\e[32m"
 Y="\e[33m"
 N="\e[0m"
-MONGDB_HOST=mongodb.daws86s.online
+MONGDB_HOST=mongodb.daws76s.online
 
 TIMESTAMP=$(date +%F-%H-%M-%S)
 LOGFILE="/tmp/$0-$TIMESTAMP.log"
@@ -42,11 +42,16 @@ dnf install nodejs -y  &>> $LOGFILE
 
 VALIDATE $? "Installing NodeJS:18"
 
-useradd roboshop
+id roboshop #if roboshop user does not exist, then it is failure
+if [ $? -ne 0 ]
+then
+    useradd roboshop
+    VALIDATE $? "roboshop user creation"
+else
+    echo -e "roboshop user already exist $Y SKIPPING $N"
+fi
 
-VALIDATE $? "creating roboshop user"
-
-mkdir  /app
+mkdir -p /app
 
 VALIDATE $? "creating app directory"
 
